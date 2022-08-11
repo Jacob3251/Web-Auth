@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# Popup auth:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- ## Firebase
+- ## Facebook
+- ## Github
 
-## Available Scripts
+## Firebase: Steps () => {}
 
-In the project directory, you can run:
+- ### Have to run npm install firebase on terminal
+- ### before opening the web app have to make a new file named firebase.init.js and it's location will be src/firebase.init.js where we have to put firebaseConfig info that we get when opening the web app on firebase project
+- ### Have to declare auth outside the App function in App.js
+  _const auth = getAuth(app);_
+- ### inside the function have to put provider for google _const provider = new GoogleAuthProvider();_
+- ### Have to make onClick method where we have to call signInWithPopup() that takes two parameters which is _auth_ and _provider_ that is created in earlier steps.
 
-### `npm start`
+## Facebook: Steps () => {}
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+_All steps are same just have to provide App ID and App Secret_
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Steps:
 
-### `npm test`
+- vist [developer facebook site](https://developer.facebook.com) and register and create new app.
+- In Authenticaion under firebase enable facebook which will ask App ID App Secret and provide a link that will be used later.
+- App ID and App Secret will be found on _Settings_ tab under _Basic_
+- On the DashBoard tab on the bottom there is Facebook login Card Click on it's settings, then put firebase link on Valid OAuth Redirect URIs box and hit save.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## SignOut funcion for signing out logged user's:
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```javascript
+const handleSignOut = () => {
+  signOut(auth)
+    .then(() => {
+      setUser({});
+      console.log("Sign-out successful.");
+    })
+    .catch((error) => {
+      setUser({});
+      console.log(error);
+    });
+};
+```
